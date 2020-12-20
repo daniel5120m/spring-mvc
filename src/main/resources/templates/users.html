@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista użytkowników wyciągnięta z bazy</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+</head>
+<body>
+<div align="center">
+    <table class="table table-striped w-50 p-3">
+        <thead>
+        <tr>
+            <th> FirstName</th>
+            <th> LastName</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${users.isEmpty()}">
+            <td colspan="2"> No Users Available</td>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td><span th:text="${user.id}"> Id </span></td>
+            <td><span th:text="${user.firstName}"> First name </span></td>
+            <td><span th:text="${user.lastName}"> Last name </span></td>
+            <td><a th:href="@{'/users/delete/' + ${user.id}}">Delete User</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
