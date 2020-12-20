@@ -7,4 +7,5 @@ import javax.persistence.Id;
 
 public interface UserRepository extends JpaRepository<User, Id> {
 
+    void deleteById(Long id);
 }

@@ -1,1 +1,7 @@
+com\example\springmvc\forms\UserForm.class
+com\example\springmvc\controllers\IndexController.class
+com\example\springmvc\dataloader\DataLoader.class
 com\example\springmvc\SpringMvcApplication.class
+com\example\springmvc\services\UserService.class
+com\example\springmvc\repository\UserRepository.class
+com\example\springmvc\model\User.class

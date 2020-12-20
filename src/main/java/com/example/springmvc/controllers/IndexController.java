@@ -31,25 +31,27 @@ public class IndexController {
     }
 
     @GetMapping("/users/delete/{id}")
-    public String deleteUser(@PathVariable Integer id) {
-        System.out.println(id);
-//        userService.deleteById(id);
-        return "userdel";
-    }
-
-    @GetMapping("/users")
-    public String getAll(Model model) {
-        model.addAttribute("users", userService.findAll());
+    public String deleteUser(@PathVariable Long id, Model model) {
+        System.out.println("Usowamy usera o id=" + id);
+        userService.deleteById(id);
+        model.addAttribute("users", userService.findAll()); //w modelu muszą być dane, bo w return mamy "users" i chcemy, by po usunięciu wyświetlili się usery
         return "users";
     }
 
-    @GetMapping("/")
-    public String index(Model model) {
 
-        // model.addAttribute("userInputForm". new UserInputForm());
-        model.addAttribute("userForm", new UserForm("Zenek", "Kiszka"));
+        @GetMapping("/users")
+        public String getAll (Model model){
+            model.addAttribute("users", userService.findAll());
+            return "users";
+        }
+
+        @GetMapping("/")
+        public String index (Model model){
+
+            // model.addAttribute("userInputForm". new UserInputForm());
+            model.addAttribute("userForm", new UserForm("Zenek", "Kiszka"));
 
 
-        return "index";
+            return "index";
+        }
     }
-}
